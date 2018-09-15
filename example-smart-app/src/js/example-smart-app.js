@@ -12,12 +12,12 @@
         var patient = smart.patient;
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
-                    type: 'Inpatient',
+                    type: 'Observation',
                     query: {
                       code: {
                         $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-                              'http://loinc.org|2089-1', 'http://loinc.org|55284-4', 'http://loinc.org|8867-4']
+                              'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
                       }
                     }
                   });
@@ -42,7 +42,7 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-          var hrate = byCodes('8867-4');
+          
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
@@ -62,7 +62,7 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
-          p.hrate = hrate;
+         
 
           ret.resolve(p);
         });
@@ -87,7 +87,7 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
-      hrate:{value: ''},
+      
     };
   }
 
@@ -131,7 +131,7 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-    $('#hrate').html(p.hrate);
+    
   };
 
 })(window);
