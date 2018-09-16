@@ -38,8 +38,8 @@
             lname = patient.name[0].family.join(' ');
           }
 
-          var room = $.when(loc).done;//rel - determine patients location
-          var link = getRoomLink(room);//rel - run function to match location to video room link
+          var room = $.when(loc).done;//rel
+          var link = getRoomLink(room);//rel
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
@@ -156,6 +156,5 @@
   }
   
   
-
 
 })(window);
