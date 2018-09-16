@@ -141,7 +141,7 @@
     $('#hdl').html(p.hdl);
     $('#hrate').html(p.hrate);
     $('#room').html(p.room);//rel
-    $('#link').html(p.link);//rel
+    $('#link').attr('href', p.link);//rel
   };
   
   //rel
