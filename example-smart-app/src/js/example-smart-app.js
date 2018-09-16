@@ -39,6 +39,12 @@
           }
 
           var room = $.when(loc).done;//rel - determine patients location
+          
+          if (room = ''){
+            room = '123';}
+          else {
+            room = '456';}
+          
           var link = getRoomLink(room);//rel run function to match location to video room link
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
