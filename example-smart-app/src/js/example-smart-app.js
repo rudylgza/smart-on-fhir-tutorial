@@ -38,8 +38,7 @@
             lname = patient.name[0].family.join(' ');
           }
 
-          //var room = $.when(loc).done;//rel - determine patients location
-          var room = '456'//rel - determine patients location
+          var room = $.when(loc).done;//rel - determine patients location
           var link = getRoomLink(room);//rel - run function to match location to video room link
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
@@ -146,7 +145,7 @@
   };
   
   //rel
-   /* function getRoomLink(room) {
+   function getRoomLink(room) {
     if (room !=''){
       var vidlink;
       vidlink = 'https://vidyo.baptisthealth.net/flex.html?roomdirect.html&key=MKZfVAIDRUKz';
@@ -155,27 +154,8 @@
       return undefined;
     }
   }
-  */
-  
-  function getRoomLink(room) {
-   var vidlink;
-    switch(room) {
-      case 123:
-        vidlink = 'https://vidyo.baptisthealth.net/flex.html?roomdirect.html&key=MKZfVAIDRUKz';
-        break;
-      case 456:
-        vidlink = 'https://vidyo.baptisthealth.net/flex.html?roomdirect.html&key=Fs8tXbG7zmWh';
-        break;
-      case default: 
-        vidlink = 'https://www.baptisthealth.net';
-        break;
-    }   
-      return  vidlink;
-    } else {
-      return undefined;
-    }
-  }
   
   
+
 
 })(window);
