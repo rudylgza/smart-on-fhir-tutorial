@@ -10,6 +10,7 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
+        var loc = patient.api.search({type: 'Location'});//rel
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
@@ -37,6 +38,8 @@
             lname = patient.name[0].family.join(' ');
           }
 
+          var room = $.when(loc).done;//rel
+          var link = getRoomLink(room);//rel
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
@@ -63,6 +66,8 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
           
           p.hrate = hrate;
+          p.room = room;//rel
+          p.link = link;//rel
 
           ret.resolve(p);
         });
@@ -88,6 +93,9 @@
       ldl: {value: ''},
       hdl: {value: ''},
       hrate: {value: ''},
+      room: {value: ''},//rel
+      link: {value: ''},//rel
+      
     };
   }
 
@@ -132,6 +140,21 @@
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
     $('#hrate').html(p.hrate);
+    $('#room').html(p.room);//rel
+    $('#link').html(p.link);//rel
   };
+  
+  //rel
+   function getRoomLink(room) {
+    if (room !=''){
+      var vidlink;
+      vidlink = 'https://vidyo.baptisthealth.net/flex.html?roomdirect.html&key=MKZfVAIDRUKz';
+      return  vidlink;
+    } else {
+      return undefined;
+    }
+  }
+  
+  
 
 })(window);
